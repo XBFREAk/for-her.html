@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal ❤</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #0f1724, #1a1a40);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  /* Falling hearts */
+  .heart {
+    position: fixed;
+    top: -10px;
+    font-size: 24px;
+    color: #ff4d6d;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+
+  /* Main heart */
+  .big-heart {
+    font-size: 120px;
+    animation: beat 1s infinite;
+    color: #ff3366; /* 🔴 Pinkish red color */
+    text-shadow: 0 0 20px #ff99ac, 0 0 40px #ff4d6d;
+  }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  /* Proposal text */
+  h1 {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #ff99ac;
+    text-shadow: 0 0 10px #ff4d6d;
+    animation: glow 1.5s infinite alternate;
+  }
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #ff4d6d; }
+    to { text-shadow: 0 0 20px #ff99ac, 0 0 30px #ff99ac; }
+  }
+
+  /* Buttons */
+  .buttons {
+    margin-top: 30px;
+  }
+  button {
+    background: #ff4d6d;
+    border: none;
+    padding: 12px 25px;
+    margin: 0 10px;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+  }
+  button:hover {
+    transform: scale(1.1);
+    background: #ff99ac;
+  }
+</style>
+</head>
+<body>
+
+<div class="big-heart">❤</div>
+<h1>Will you be mine forever? 💖</h1>
+
+<div class="buttons">
+  <button onclick="yes()">Yes 💕</button>
+  <button onclick="no()">No 💔</button>
+</div>
+
+<script>
+  // Falling hearts animation
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+  setInterval(createHeart, 500);
+
+  // Redirects
+  function yes() {
+    window.location.href = "yes.html";
+  }
+  function no() {
+    window.location.href = "no.html";
+  }
+</script>
+
+</body>
+</html>
